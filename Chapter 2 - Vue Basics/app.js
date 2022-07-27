@@ -8,12 +8,25 @@ const app = Vue.createApp({
       title: "The Final Empire",
       author: "Jerry B",
       age: 45,
+      x: 0,
+      y: 0,
     };
   },
 
   methods: {
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
+    },
+    handleEvent(event, numb) {
+      console.log("event", event, event.type);
+
+      if (numb) {
+        console.log(numb);
+      }
+    },
+    handleMouseMove(event) {
+      this.x = event.offsetX;
+      this.y = event.offsetY;
     },
   },
 });
