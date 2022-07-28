@@ -4,12 +4,33 @@ const app = Vue.createApp({
 
   data() {
     return {
+      url: "https://www.google.com/",
       showBooks: true,
-      title: "The Final Empire",
+      books: [
+        {
+          title: "Name of the Wind",
+          author: "patrick rothfuss",
+          img: "https://picsum.photos/seed/asdasd/150",
+          isFav: true,
+        },
+        {
+          title: "the way of the kings",
+          author: "brandon sanderson",
+          img: "https://picsum.photos/seed/asdfds/150",
+          isFav: false,
+        },
+        {
+          title: "the final empire",
+          author: "brandon sanderson",
+          img: "https://picsum.photos/seed/piewrwerrcsum/150",
+          isFav: false,
+        },
+      ],
+      /* title: "The Final Empire",
       author: "Jerry B",
       age: 45,
       x: 0,
-      y: 0,
+      y: 0, */
     };
   },
 
@@ -17,7 +38,11 @@ const app = Vue.createApp({
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
     },
-    handleEvent(event, numb) {
+    toggleFavorite(index) {
+      this.books[index].isFav = !this.books[index].isFav;
+    },
+
+    /* handleEvent(event, numb) {
       console.log("event", event, event.type);
 
       if (numb) {
@@ -27,6 +52,12 @@ const app = Vue.createApp({
     handleMouseMove(event) {
       this.x = event.offsetX;
       this.y = event.offsetY;
+    }, */
+  },
+  computed: {
+    filteredBooks() {
+      /* Can be used in v-for-=-= */
+      return this.books.filter((book) => book.isFav);
     },
   },
 });
