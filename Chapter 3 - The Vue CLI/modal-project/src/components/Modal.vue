@@ -3,8 +3,10 @@
 <template>
   <div class="backdrop" @click="closeModal()">
     <div class="modal" :class="{ sale: theme == 'sale' }">
-      <h2>{{ header }}</h2>
-      <p>{{ content }}</p>
+      <slot></slot>
+      <div class="actions">
+        <slot name="links"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  >
 .modal {
   width: 400px;
   padding: 20px;
